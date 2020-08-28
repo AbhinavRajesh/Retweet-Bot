@@ -39,3 +39,6 @@ A Twitter Bot which Retweets and likes a particular Hashtag
     ```shell 
     $(env) py twitter.py
     ```
+    
+### Issues
+Currently there is one bug which I'm aware of and I'm also working on the same and would be resolved in future.
