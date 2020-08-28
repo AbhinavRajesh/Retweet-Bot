@@ -1,5 +1,6 @@
 import tweepy
 import time
+import random
 
 consumer_key = "ENTER API KEY HERE"
 consumer_secret = "ENTER API SECRET KEY HERE"
@@ -14,16 +15,22 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 print("Retweet Bot Up and Running...")
 
 search = "ENTER HASHTAG HERE"  # Retweets tweets with this tag
-nor = 0
 
-for tweet in tweepy.Cursor(api.search, search).items(500):
+status = [
+    "ENTER_THE_COMMENTS_1",
+    "ENTER_THE_COMMENTS_2",
+]
+
+for tweet in tweepy.Cursor(api.search, search).items(1000):
     try:
         tweet.favorite()
         print('Tweet Liked')
-        tweet.retweet()
+        username = tweet._json['entities']['user_mentions'][0]['screen_name']
+        tweet_id = tweet.id_str
+        tweet_link = "https://twitter.com/" + username + "/status/" + tweet_id
+        i = random.randint(0, len(status))
+        api.update_status(status[i-1] + "\n" + tweet_link)
         print("Tweet Retweeted")
-        nor += 1
-        print("Number of Retweets: " + str(nor))
         time.sleep(7)  # Change the time of Retweet gap here in seconds
     except tweepy.TweepError as e:
         print(e.reason)
