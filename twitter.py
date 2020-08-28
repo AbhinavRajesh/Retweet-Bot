@@ -19,7 +19,7 @@ search = "ENTER HASHTAG HERE"  # Retweets tweets with this tag
 status = [
     "ENTER_THE_COMMENTS_1",
     "ENTER_THE_COMMENTS_2",
-]
+]  # Enter the comments which would be retweeted
 
 for tweet in tweepy.Cursor(api.search, search).items(1000):
     try:
