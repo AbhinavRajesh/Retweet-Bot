@@ -3,7 +3,7 @@
 </p>
 
 ## Retweet-Bot
-A Twitter Bot which Retweets and likes a particular Hashtag
+A Twitter Bot which Retweets with Comment and likes tweets with particular Hashtag
 
 ### Tech Used
 - Python
